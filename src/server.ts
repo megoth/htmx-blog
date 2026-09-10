@@ -92,7 +92,8 @@ async function startServer(): Promise<void> {
       .send('<p>Entry created successfully. <a href="/">Go to list</a></p>');
   });
 
-  const port = Number(process.env.PORT ?? 5173);
+  const configuredPort = Number.parseInt(process.env.PORT ?? '', 10);
+  const port = Number.isInteger(configuredPort) && configuredPort > 0 ? configuredPort : 5173;
   app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
   });
