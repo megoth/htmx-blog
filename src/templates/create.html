@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMX Blog - Create</title>
+    <script src="https://unpkg.com/htmx.org@2.0.7"></script>
+  </head>
+  <body>
+    <h1>Create Blog Entry</h1>
+    <p><a href="/">Back to list</a></p>
+
+    <form hx-post="/api/entries" hx-target="#result" hx-swap="innerHTML">
+      <div>
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" required />
+      </div>
+      <div>
+        <label for="content">Content</label>
+        <textarea id="content" name="content" required></textarea>
+      </div>
+      <button type="submit">Create</button>
+    </form>
+
+    <div id="result"></div>
+  </body>
+</html>
