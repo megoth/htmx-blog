@@ -87,6 +87,7 @@ async function startServer(): Promise<void> {
     });
 
     res
+      .set('HX-Redirect', '/')
       .status(201)
       .type('html')
       .send('<p>Entry created successfully. <a href="/">Go to list</a></p>');
