@@ -1,7 +1,7 @@
 import express from 'express';
+import escapeHtml from 'escape-html';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { createServer as createViteServer } from 'vite';
 
 type BlogEntry = {
@@ -12,18 +12,7 @@ type BlogEntry = {
 
 const entries: BlogEntry[] = [];
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const templatesDir = path.resolve(__dirname, 'templates');
-
-function escapeHtml(value: string): string {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;');
-}
+const templatesDir = path.resolve(process.cwd(), 'src/templates');
 
 function renderEntriesHtml(items: BlogEntry[]): string {
   if (items.length === 0) {

@@ -16,10 +16,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "escape-html": "^1.0.3",
     "express": "^5.2.1",
     "vite": "^8.3.0"
   },
   "devDependencies": {
+    "@types/escape-html": "^1.0.4",
     "@types/express": "^5.0.6",
     "@types/node": "^22.20.2",
     "tsx": "^4.23.13",
